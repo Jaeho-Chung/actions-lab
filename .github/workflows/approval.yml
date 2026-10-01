@@ -1,0 +1,14 @@
+name: approval-lab
+on: [push, workflow_dispatch]
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - run: echo "deploy dev"
+  prod:
+    needs: dev
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo "deploy prod"
