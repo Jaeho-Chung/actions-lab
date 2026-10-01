@@ -1,0 +1,13 @@
+name: hello
+description: say hello
+inputs:
+  who:
+    description: name
+    default: world
+runs:
+  using: composite
+  steps:
+    - run: echo "Hello, ${{ inputs.who }}!"
+      shell: bash
+    - run: date
+      shell: bash
