@@ -1,0 +1,10 @@
+name: composite-lab
+on: workflow_dispatch
+jobs:
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/hello
+        with:
+          who: GitHub
