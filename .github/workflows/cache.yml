@@ -1,0 +1,15 @@
+name: cache-lab
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        id: c
+        with:
+          path: ~/slow
+          key: slow-${{ runner.os }}-${{ hashFiles('lab-input.txt') }}
+      - if: steps.c.outputs.cache-hit != 'true'
+        run: mkdir -p ~/slow && sleep 30 && echo done > ~/slow/r.txt
+      - run: cat ~/slow/r.txt
